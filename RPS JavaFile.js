@@ -6,10 +6,11 @@ function getComputerChoice (Choices) {
 	var randomChoices = Choices[Math.floor(Math.random() * Choices.length)];
 	return randomChoices;
 };
-
+// I've move the playerSelection to outside of the function then it can be accessed outside of the function.
+var playerSelection = prompt("Please enter even Rock, Paper or Scissors").toLowerCase();
+ 
 function playRound (playerSelection, computerSelection) {
      getComputerChoice(); //We can use items within other function if we call them within the function.
-	 var playerSelection = prompt("Please enter even Rock, Paper or Scissors").toLowerCase();
 	 var random = getComputerChoice(); 
 	 if (playerSelection == "Rock".toLowerCase() && random.toLowerCase() == "Scissors".toLowerCase()) {
 		 console.log("You Win Rock beats Scissors!");
