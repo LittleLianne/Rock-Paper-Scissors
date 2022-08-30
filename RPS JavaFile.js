@@ -6,36 +6,52 @@ function getComputerChoice (Choices) {
 	var randomChoices = Choices[Math.floor(Math.random() * Choices.length)];
 	return randomChoices;
 };
-// I've move the playerSelection to outside of the function then it can be accessed outside of the function.
-var playerSelection = prompt("Please enter even Rock, Paper or Scissors").toLowerCase();
+
+let playerScore = parseInt(0);
+let computerScore = parseInt(0);
+let win = "You Win Rock beats Scissors!";
+let lose = "You Lose Scissors beats Paper! Try again!";
+let tie = "You've entered an invalid word.Please enter Rock, Paper or Scissors!";
  
 function playRound (playerSelection, computerSelection) {
      getComputerChoice(); //We can use items within other function if we call them within the function.
-	 var random = getComputerChoice(); 
-	 if (playerSelection == "Rock".toLowerCase() && random.toLowerCase() == "Scissors".toLowerCase()) {
-		 console.log("You Win Rock beats Scissors!");
-	 } else if (playerSelection =="Paper".toLowerCase() && random.toLowerCase()== "Scissors".toLowerCase()) {
-		 console.log("You Lose Scissors beats Paper! Try again!");
-	 } else if (playerSelection =="Scissors".toLowerCase() && random.toLowerCase() == "Paper".toLowerCase()) {
-		 console.log("You Win Scissors beats Paper!");
-	 } else if (playerSelection =="Paper".toLowerCase() && random.toLowerCase() == "Rock".toLowerCase()) {
-		 console.log("You Win Paper beats Rock!");
-	 } else if (playerSelection =="Rock".toLowerCase() && random.toLowerCase() == "Paper".toLowerCase()){
-		 console.log("You Lose Paper beats Rock!");
-	 } else if (playerSelection =="Scissors".toLowerCase() && random.toLowerCase() == "Rock".toLowerCase()) { 
-	     console.log("You Lose Rock beats Scissors!");
+	 //var playerSelection = prompt("Please enter even Rock, Paper or Scissors").toLowerCase();
+     //var computerSelection = getComputerChoice().toLowerCase();
+	 if (playerSelection == "Rock".toLowerCase() && computerSelection.toLowerCase() == "Scissors".toLowerCase()) {
+		 return win;
+		 playerScore ++;
+	 } else if (playerSelection =="Paper".toLowerCase() && computerSelection.toLowerCase()== "Scissors".toLowerCase()) {
+		 return lose;
+		 computerScore ++;
+	 } else if (playerSelection =="Scissors".toLowerCase() && computerSelection.toLowerCase() == "Paper".toLowerCase()) {
+		 return win;
+		 playerScore ++;
+	 } else if (playerSelection =="Paper".toLowerCase() && computerSelection.toLowerCase() == "Rock".toLowerCase()) {
+		 return win;
+		 playerScore ++;
+	 } else if (playerSelection =="Rock".toLowerCase() && computerSelection.toLowerCase() == "Paper".toLowerCase()){
+		 return lose;
+		 computerScore ++;
+	 } else if (playerSelection =="Scissors".toLowerCase() && computerSelection.toLowerCase() == "Rock".toLowerCase()) { 
+	     return lose;
+		 computerScore ++;
       }else {
-		 console.log("You choice the same as the computer no-one wins.Try again!");
+		 return tie;
 	 };	 
 };
 
 playRound();
-console.log(playRound(playerSelection, computerSelection));
 
-function game() {
-	playRound();
+
+// function game() Making the below code outside of a function now.
+	//Don't think playRound() needed below now as added below.
+	//playRound();
 	for (let i=0; i < 5; i++) {
-		console.log(playerSelection);
-	};
-};
+	let playerSelection = prompt("Please enter even Rock, Paper or Scissors").toLowerCase();
+	let computerSelection = getComputerChoice().toLowerCase();
+	console.log(playRound(playerSelection, computerSelection));
+	console.log("your score = " + playerScore);
+    console.log("Computer's score = " + computerScore);
+}
+
 	 
