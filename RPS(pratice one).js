@@ -1,71 +1,73 @@
 //Computer turn, randoms logs a item from the list.
-function getComputerChoice (Choices) {
-	var Choices = ["Rock", "Paper","Scissors"];
-	var randomChoices = Choices[Math.floor(Math.random() * Choices.length)];
-	return randomChoices;
-};
-
+function getComputerChoice () {
+  var Choices = ["Rock", "Paper","Scissors"];
+  var randomChoices = Choices[Math.floor(Math.random() * Choices.length)];
+  return randomChoices;
+}
+  var playerScore = 0;
+  var computerScore = 0;
  
-function playRound (playerSelection, computerSelection) {
-     // don't actually know if i need the calling function below.
-	 getComputerChoice(); //We can use items within other function if we call them within the function.
+function playRound () {
+	 getComputerChoice();
+  let playerSelection = prompt("Please enter even Rock, Paper or Scissors");
+  let computerSelection = getComputerChoice();
+ 
+//We can use items within other function if we call them within the function.
 	 
-	 //User Rock if statement.
-	 if (playerSelection.toLowerCase() == "Rock" && computerSelection.toLowerCase() == "Scissors") {
-		 return win;
-		 playerScore++;
-	 } else if(computerSelection.toLowerCase() == "Rock" && playerSelection.toLowerCase() == "rock") {
-		 return tie;
-	 } else {
-		 return lose;
-		 computerScore++;
-	 }
+//User Rock if statement.
+if(playerSelection.toLowerCase() == "Rock" && computerSelection.toLowerCase() == "Scissors") {
+	 console.log("You Win Rock beats Scissors");
+	 playerScore +=1;
+}else if(playerSelection.toLowerCase() == "Rock" && computerSelection.toLowerCase() == "Paper") {
+	 console.log ("You Lose Paper beats Rock");
+	 computerScore +=1;
+}else {
+	console.log("It\'s a tie");	
 }
 		 
- //User Paper if statement.	 
- 
-	if (playerSelection =="Paper".toLowerCase() && computerSelection.toLowerCase()== "Scissors") {
-		 return lose;
-		 computerScore++;
-	 } else if(computerSelection =="Paper".toLowerCase() && playSelection == "Paper") {
-         return tie ;
-     } else { 
-       	 return win;
-		 playerScore++;
-	 }
+//User Paper if statement.	 
+if (playerSelection =="Paper".toLowerCase() && computerSelection.toLowerCase()== "Scissors") {
+	  console.log("You lose Scissors beats Paper");
+	  computerScore+=1;
+}else if(computerSelection =="Paper".toLowerCase() && playerSelection.toLowerCase() == "Paper") {
+       console.log("Its a tie.");
+} else { 
+    console.log("You Win Rock beats Scissors");
+   playerScore+=1;
 }
 		 
 //User scissors if statement.
-	 } else if (playerSelection =="Scissors".toLowerCase() && computerSelection.toLowerCase() == "Paper"()) {
-		 return win;
-		 playerScore++;
-	 } else if(computerSelection =="Paper".toLowerCase() && playSelection == "Paper") {
-         return tie;
-     } else { 
-       	 return lose;
-		 computerScore++;
-	 }
+if (playerSelection =="Scissors".toLowerCase() && computerSelection.toLowerCase() == "Paper") {
+      console.log("You Win Rock beats Scissors");
+	  playerScore+=1;
+} else if(computerSelection =="Rock".toLowerCase() && playerSelection == "Scissors") {
+        console.log("You Lose Rock beats Scissors");
+		computerScore +=1;
+}else {
+	 console.log("It\'s a tie");	
 }
-	 
+}
 
-// playRound(); < don't think i need this here
-
-
-// function game() Making the below code outside of a function now.
-	//Don't think playRound() needed below now as added below.
-	//playRound();
 function game() {
- let playerScore = parseInt(0);
- let computerScore = parseInt(0);
- let win = "You Win Rock beats Scissors!";
- let lose = "You Lose Scissors beats Paper! Try again!";
- let tie = "You\'ve entered an invalid word.Please enter Rock, Paper or Scissors!";
+playRound();
+getComputerChoice();
 
 for (let i=0; i < 5; i++) {
   let playerSelection = prompt("Please enter even Rock, Paper or Scissors");
   let computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-  console.log("your score = " + playerScore);
-  console.log("Computer's score = " + computerScore);
+  //console.log(playRound(playerSelection, computerSelection));
+  //console.log("your score = " + playerScore);
+  //console.log("Computer's score = " + computerScore);
+}
+}
+
+function finalScore () {
+	playRound();
+	getComputerChoice();
+	game();
+if (playerScore > computerScore) {
+	console.log("You Win!");
+}else{
+	console.log("You lose!");
 }
 }
